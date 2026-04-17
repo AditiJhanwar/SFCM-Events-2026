@@ -66,7 +66,9 @@ const events = [
   { date: "Apr 22", day: "Wed", time: "4:30–6:30pm", name: "Carbon-Negative Networking", location: "ZOË Cocktail Bar, 579 Howard St, SF", area: "SF", type: "Networking", paid: false, url: "https://luma.com/9oarsszv?tk=LfXNal", host: "Asplund Earth Alliance", desc: "Networking for biochar, DAC, reforestation, renewable energy, and GHG reduction pros." },
   { date: "Apr 22", day: "Wed", time: "5:30–8:30pm", name: "GeoAI, Climate Risk, and Tacos", location: "SF (TBA)", area: "SF", type: "Salon / Networking", paid: false, url: "https://luma.com/kmhoki8u?tk=QdHHnG", host: "Tee Barr, SF Climate Week", desc: "Chatham House Rules salon: GeoAI + Earth observation for climate risk, insurance, finance." },
   { date: "Apr 22", day: "Wed", time: "6:30–8:30pm", name: "Consumers and the Future of Energy Affordability", location: "SF (TBA)", area: "SF", type: "Panel", paid: false, url: "https://luma.com/d472h2sn?tk=699mBQ", host: "Palmetto, Deploy Action", desc: "Rising energy costs, consumer impacts, policy shifts, and 2026 midterms." },
+  { date: "Apr 22", day: "Wed", time: "TBA", name: "\"Inventing What Doesn't Exist Yet\" with Tara Lemmey", location: "BGA HQ, Berkeley", area: "East Bay", type: "Fireside Chat", paid: false, url: "https://luma.com/z0h0i6jm", host: "Berkeley Gateway Accelerator", desc: "Fireside chat + wine & cheese at BGA HQ. Tara designed intelligence-sharing infrastructure still running across the US government." },
   { date: "Apr 22", day: "Wed", time: "7:00pm", name: "Earth Day at the Coliseum: Oakland Roots SC", location: "Oakland Coliseum", area: "East Bay", type: "Social / Event", paid: true, url: "https://www.sfclimateweek.org", host: "Oakland Roots SC, SF Climate Week", desc: "Climate community night. 5–7pm pregame tailgate with climate org tabling. SFCW discounted tickets." },
+  { date: "Apr 23", day: "Thu", time: "TBA", name: "Deep Tech at Dusk: Climate Week Happy Hour Mixer", location: "Berkeley", area: "East Bay", type: "Happy Hour", paid: false, url: "https://luma.com/qm8281ph", host: "Berkeley Gateway Accelerator", desc: "A relaxed mixer with the Berkeley crew. Climate, AI, and Biotech minds in one room. No agenda, just good people." },
   { date: "Apr 23", day: "Thu", time: "7:30–9:30am", name: "Year of the Woman Farmer: Climate-Smart Agriculture Panel", location: "McLaren Conference Center, 2130 Fulton St, SF", area: "SF", type: "Panel / Breakfast", paid: false, url: "https://luma.com/2e7ygd3j?tk=8kJHmB", host: "HARVEST California, USF", desc: "Women leaders in climate-smart agriculture, agrivoltaics, and equitable food systems." },
   { date: "Apr 23", day: "Thu", time: "9:00am", name: "Imagine Next: Climate Tech Capital Summit (Day 3)", location: "SF", area: "SF", type: "Summit", paid: false, url: "https://luma.com/m42d679x?tk=pGwD5K", host: "SICouncil Team", desc: "Final day of multi-day global climate investment summit." },
   { date: "Apr 23", day: "Thu", time: "11:00am–4:00pm", name: "Climate Solutions Summit", location: "The Melody of SF, 906 Broadway, SF", area: "SF", type: "Summit", paid: false, url: "https://luma.com/cqm0p2xd", host: "Project Drawdown", desc: "Full-day solutions summit: frameworks, implementation pathways, community discussion." },
@@ -279,12 +281,9 @@ export default function App() {
           <div style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
             <span style={{ color: ORANGE, fontSize: 9, marginTop: 4, flexShrink: 0 }}>●</span>
             <div>
-              <p style={{ margin: "0 0 2px", fontSize: 13, fontFamily: "sans-serif", color: TEXT }}>
+              <p style={{ margin: "0 0 2px", fontSize: 13, fontFamily: "sans-serif", color: TEXT_MID }}>
                 Bridging the{" "}
                 <span style={{ color: ORANGE }}>Lab-to-Market Gap</span>
-              </p>
-              <p style={{ margin: 0, fontSize: 14, fontFamily: "sans-serif", fontWeight: 700, color: TEXT_MID }}>
-                Future Frontier Capital · Berkeley Gateway Accelerator
               </p>
             </div>
           </div>
