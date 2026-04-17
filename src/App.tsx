@@ -1,7 +1,7 @@
 import { useState } from "react";
-
+ 
 const events = [
-
+ 
   { date: "Apr 16", day: "Thu", time: "4:00–7:00pm", name: "SFCW Kickoff with Mayor Daniel Lurie", location: "San Francisco", area: "SF", type: "Networking / Reception", paid: false, url: "https://business.sfchamber.com/events/details/2026-san-francisco-climate-week-kick-off-13229", host: "Yes SF, SF Chamber of Commerce", desc: "Official SF Climate Week kickoff reception with Mayor Daniel Lurie. Hosted by Yes SF and the SF Chamber of Commerce." },
   { date: "Apr 17", day: "Fri", time: "7:00am–4:00pm", name: "AI + Climate Master Class with Stanford", location: "Stanford University, Stanford CA", area: "South Bay", type: "Master Class", paid: false, url: "https://luma.com/eedn80x5?tk=libKLx", host: "Stanford Doerr School of Sustainability", desc: "Full-day intensive on AI applications for climate solutions and business resilience." },
   { date: "Apr 17", day: "Fri", time: "4:00–6:00pm", name: "Stanford Sustainability Leaders Circle: Fireside + Reception", location: "Stanford CA (after registration)", area: "South Bay", type: "Executive Reception", paid: false, url: "https://luma.com/wrsn1uyw?tk=XRDWhL", host: "Stanford Doerr School", desc: "Invite-only fireside for board directors and senior executives on sustainability leadership." },
@@ -85,11 +85,11 @@ const events = [
   { date: "Apr 24", day: "Fri", time: "9:00–11:00am", name: "Powerhouse Presents: Watt It Takes Live with Alex Honnold", location: "SF (after registration)", area: "SF", type: "Talk / Live Podcast", paid: false, url: "https://luma.com/6ll5hfxc", host: "Powerhouse, Emily Kirsch", desc: "Live podcast with Alex Honnold (Free Solo + Honnold Foundation) on clean energy access." },
   { date: "Apr 24", day: "Fri", time: "10:30am–4:00pm", name: "Global Climate Solutions Summit 2026", location: "Punch Line SF, 444 Battery St, SF", area: "SF", type: "Summit", paid: true, url: "https://luma.com/jvl9bxpe", host: "Congruent, Voyager, Climactic, Blue Bear Capital, Khosla Ventures", desc: "Flagship investor-founder summit: VC panels, founder demos, deal flow, keynotes, VIP reception." },
   { date: "Apr 24", day: "Fri", time: "4:30–6:30pm", name: "Decarbonizing CA's Energy Grid: Panel + Networking", location: "SF (after registration)", area: "SF", type: "Panel / Networking", paid: false, url: "https://luma.com/ykbns6on", host: "Net Impact, PG&E", desc: "Panel on decarbonizing CA energy. PG&E + EV, public policy, and energy sector leaders." },
-
+ 
 ];
-
+ 
 const areas = ["All", "SF", "East Bay", "South Bay", "Virtual"];
-
+ 
 const typeColors = {
   "Happy Hour": "#9B3A2A",
   "Networking": "#5C7A4A",
@@ -108,16 +108,16 @@ const typeColors = {
   "Festival": "#7A5C2A",
   "Expo": "#5C4A7A",
 };
-
+ 
 const getTypeColor = (type) => {
   for (const key of Object.keys(typeColors)) {
     if (type.includes(key)) return typeColors[key];
   }
   return "#5C7A4A";
 };
-
+ 
 const days = [...new Set(events.map(e => `${e.date} (${e.day})`))];
-
+ 
 // Palette from Deep Tech 101 screenshot
 const BG = "#F2EDE4";
 const CARD = "#FDFAF5";
@@ -127,32 +127,32 @@ const TEXT_MID = "#4A4540";
 const TEXT_LIGHT = "#9A928A";
 const ORANGE = "#C0622A";
 const GREEN = "#4A7C59";
-
+ 
 export default function App() {
   const [areaFilter, setAreaFilter] = useState("All");
   const [search, setSearch] = useState("");
   const [paidFilter, setPaidFilter] = useState("All");
-
+ 
   const filtered = events.filter(e => {
     const areaOk = areaFilter === "All" || e.area === areaFilter;
     const searchOk = !search || e.name.toLowerCase().includes(search.toLowerCase()) || e.host.toLowerCase().includes(search.toLowerCase()) || e.desc.toLowerCase().includes(search.toLowerCase());
     const paidOk = paidFilter === "All" || (paidFilter === "Free" && !e.paid) || (paidFilter === "Paid" && e.paid);
     return areaOk && searchOk && paidOk;
   });
-
+ 
   const grouped = days.reduce((acc, d) => {
     const de = filtered.filter(e => `${e.date} (${e.day})` === d);
     if (de.length) acc[d] = de;
     return acc;
   }, {});
-
+ 
   const areaColor = (a) => ({
     "East Bay": "#3D5C8A", "South Bay": "#7A5C2A", "Virtual": "#6B3A8A"
   }[a] || GREEN);
-
+ 
   return (
     <div style={{ fontFamily: "'Georgia', 'Times New Roman', serif", background: BG, minHeight: "100vh", color: TEXT }}>
-
+ 
       {/* ── HEADER ── */}
       <div style={{
         background: `linear-gradient(150deg, #C8DECA 0%, #D8EAD6 20%, #E6EFE2 45%, ${BG} 70%)`,
@@ -173,11 +173,11 @@ export default function App() {
               Apr 16–24 · Bay Area · 80+ events compiled
             </p>
           </div>
-
-
+ 
+ 
         </div>
       </div>
-
+ 
       {/* ── FILTERS ── */}
       <div style={{
         background: CARD, borderBottom: `1px solid ${BORDER}`,
@@ -216,7 +216,7 @@ export default function App() {
           <span style={{ color: TEXT_LIGHT, fontSize: 11, fontFamily: "sans-serif", marginLeft: 2 }}>{filtered.length} events</span>
         </div>
       </div>
-
+ 
       {/* ── EVENT LIST ── */}
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "22px 28px 0" }}>
         {Object.entries(grouped).map(([day, dayEvents]) => (
@@ -226,7 +226,7 @@ export default function App() {
               <div style={{ flex: 1, height: 1, background: BORDER }} />
               <span style={{ color: TEXT_LIGHT, fontSize: 11, fontFamily: "sans-serif" }}>{dayEvents.length}</span>
             </div>
-
+ 
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
               {dayEvents.map((e, i) => (
                 <a key={i} href={e.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
@@ -266,7 +266,7 @@ export default function App() {
             </div>
           </div>
         ))}
-
+ 
         {filtered.length === 0 && (
           <div style={{ textAlign: "center", color: TEXT_LIGHT, padding: "50px 0", fontFamily: "sans-serif" }}>
             <div style={{ fontSize: 32, marginBottom: 10 }}>🔍</div>
@@ -274,16 +274,19 @@ export default function App() {
           </div>
         )}
       </div>
-
+ 
       {/* ── FOOTER ── */}
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "20px 28px 32px" }}>
         <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 18, display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
             <span style={{ color: ORANGE, fontSize: 9, marginTop: 4, flexShrink: 0 }}>●</span>
             <div>
-              <p style={{ margin: "0 0 2px", fontSize: 13, fontFamily: "sans-serif", color: TEXT_MID }}>
+              <p style={{ margin: "0 0 4px", fontSize: 13, fontFamily: "sans-serif", color: TEXT_MID }}>
                 Bridging the{" "}
                 <span style={{ color: ORANGE }}>Lab-to-Market Gap</span>
+              </p>
+              <p style={{ margin: 0, fontSize: 14, fontFamily: "sans-serif", fontWeight: 700, color: "#8A7F74" }}>
+                Future Frontier Capital · Berkeley Gateway Accelerator
               </p>
             </div>
           </div>
@@ -293,7 +296,7 @@ export default function App() {
           </div>
         </div>
       </div>
-
+ 
     </div>
   );
 }
